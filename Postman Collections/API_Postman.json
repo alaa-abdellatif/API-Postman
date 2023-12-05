@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "cb2f9a21-d286-431a-868a-149e1821c660",
+		"name": "API Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea5af874-ff5b-43bb-a935-4edcdc0900f4",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "9b2b4407-1b63-4d12-ad8e-50ae82c32fe6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users"
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4eed97b0-f50d-456a-bf57-cc80b9654499",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"//Valid first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Kayley\");\r",
+							"});\r",
+							"\r",
+							"//Invalid first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Alaa\");\r",
+							"});\r",
+							"\r",
+							"//Valid last name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Lname).to.eql(\"Tillman\");\r",
+							"});\r",
+							"//Invalid last name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Lname).to.eql(\"Abdellatif\");\r",
+							"});\r",
+							"//Valid country\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Country).to.eql(\"Iran\");\r",
+							"});\r",
+							"//Invalid country\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Country).to.eql(\"Egypt\");\r",
+							"});\r",
+							"//Valid id\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('1');\r",
+							"});\r",
+							"//Invalid id\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('20');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "36a00314-52b9-4826-b9a4-1847e516267f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Post new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0423af5-df17-42a0-905c-3cd212db9acd",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"//Response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "5c2e24a8-2dc5-4fc2-a37a-662e61874a81",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Fname\": \"Alaa\",\r\n    \"Lname\": \"Abdellatif\",\r\n    \"Country\": \"Egypt\",\r\n    \"id\": \"6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users"
+			},
+			"response": []
+		},
+		{
+			"name": "Check new user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8e2190e-936f-4255-8cf3-f14246ef4141",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Response time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"//Valid first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Alaa\");\r",
+							"});\r",
+							"\r",
+							"//Invalid first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Aya\");\r",
+							"});\r",
+							"\r",
+							"//Valid last name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Lname).to.eql(\"Abdellatif\");\r",
+							"});\r",
+							"//Invalid last name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Lname).to.eql(\"Mohamed\");\r",
+							"});\r",
+							"//Valid country\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Country).to.eql(\"Egypt\");\r",
+							"});\r",
+							"//Invalid country\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Country).to.eql(\"Morocco\");\r",
+							"});\r",
+							"//Valid id\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('6');\r",
+							"});\r",
+							"//Invalid id\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('1');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "17edbd0a-2b2d-4f69-982c-878a80da6cb3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/6"
+			},
+			"response": []
+		},
+		{
+			"name": "Change user's data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e4215e1-73bb-431c-904b-8f4e3a1df23b",
+						"exec": [
+							"/////////////Change first name from Jennifer to Cassie//////////////\r",
+							"\r",
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "1bba08a4-da2c-42a0-b39a-23ec7def212c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"Fname\": \"Cassie\",\r\n        \"Lname\": \"Becker\",\r\n        \"Country\": \"Indonesia\",\r\n        \"id\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Check changed user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "92754834-2499-45b8-b1a0-07fc5cc9cef2",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"//Valid new first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Cassie\");\r",
+							"});\r",
+							"\r",
+							"//Invalid new first name\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.Fname).to.eql(\"Jennifer\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "39767c73-eccd-4e97-996a-76f52f12982c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc0dbecf-2004-43f6-82a3-b0e6532026fe",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "714a7b6d-abb9-46c2-b8da-179a607aaf0d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Check deleted user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb8c1355-08c5-49c9-a826-52f8c28e3e91",
+						"exec": [
+							"//Status code\r",
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							"\r",
+							"//Respnonce time\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"//Check deleted user\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.id).to.eql('5');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d6fbe3c9-50c3-4be2-ac7e-dea67e3052af",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://655d25469f1e1093c5990ea2.mockapi.io/Users/5"
+			},
+			"response": []
+		}
+	]
+}
